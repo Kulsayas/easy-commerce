@@ -1,5 +1,10 @@
 <script setup>
 import UserLayout from "@/layouts/UserLayout.vue";
+import Product from "@/components/Product.vue";
+
+import { useProductStore } from "@/stores/user/product";
+
+const productStore = useProductStore();
 </script>
 
 <template>
@@ -17,32 +22,6 @@ import UserLayout from "@/layouts/UserLayout.vue";
         </div>
       </div>
     </div>
-
-    <!-- product card -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4 mx-4"
-    >
-      <div
-        v-for="items in [1, 2, 3, 4, 5, 6, 7, 8]"
-        class="card bg-gray-100 w-full shadow-sm"
-      >
-        <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-          />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Card Title</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Product :products="productStore.list"></Product>
   </UserLayout>
 </template>
